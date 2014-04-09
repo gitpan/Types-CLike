@@ -4,7 +4,7 @@
       "Brendan Byrd <BBYRD@CPAN.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300039, CPAN::Meta::Converter version 2.130880",
+   "generated_by" : "Dist::Zilla version 5.012, CPAN::Meta::Converter version 2.132830",
    "license" : [
       "artistic_2"
    ],
@@ -25,6 +25,7 @@
       "develop" : {
          "requires" : {
             "Pod::Coverage::TrustPod" : "0",
+            "Test::CPAN::Changes" : "0.19",
             "Test::More" : "0",
             "Test::NoTabs" : "0",
             "Test::Pod" : "1.41",
@@ -39,11 +40,15 @@
          }
       },
       "test" : {
+         "recommends" : {
+            "CPAN::Meta" : "2.101090",
+            "CPAN::Meta::Requirements" : "2.120530"
+         },
          "requires" : {
             "IO::Handle" : "1.27_02",
             "List::Util" : "1.20",
             "Scalar::Util" : "1.20",
-            "Test::CheckDeps" : "0.007",
+            "Test::CheckDeps" : "0.010",
             "Test::More" : "0.94",
             "Test::TypeTiny" : "0.001"
          }
@@ -52,7 +57,7 @@
    "provides" : {
       "Types::CLike" : {
          "file" : "lib/Types/CLike.pm",
-         "version" : "0.90"
+         "version" : "0.91"
       }
    },
    "release_status" : "stable",
@@ -60,15 +65,14 @@
       "bugtracker" : {
          "web" : "https://github.com/SineSwiper/Types-CLike/issues"
       },
-      "homepage" : "https://github.com/SineSwiper/Types-CLike/wiki",
+      "homepage" : "https://github.com/SineSwiper/Types-CLike",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/SineSwiper/Types-CLike.git",
+         "url" : "https://github.com/SineSwiper/Types-CLike.git",
          "web" : "https://github.com/SineSwiper/Types-CLike"
-      },
-      "x_irc" : "irc://irc.perl.org/#web-simple"
+      }
    },
-   "version" : "0.90",
+   "version" : "0.91",
    "x_Dist_Zilla" : {
       "perl" : {
          "version" : "5.014002"
@@ -82,17 +86,17 @@
          {
             "class" : "Dist::Zilla::Plugin::MakeMaker",
             "name" : "@Author::BBYRD/MakeMaker",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::NextVersion",
             "name" : "@Author::BBYRD/Git::NextVersion",
-            "version" : "2.014"
+            "version" : "2.019"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::GatherDir",
             "name" : "@Author::BBYRD/Git::GatherDir",
-            "version" : "2.014"
+            "version" : "2.019"
          },
          {
             "class" : "Dist::Zilla::Plugin::OurPkgVersion",
@@ -107,16 +111,113 @@
                   "finder" : [
                      ":InstallModules",
                      ":ExecFiles"
+                  ],
+                  "plugins" : [
+                     {
+                        "class" : "Pod::Weaver::Plugin::SingleEncoding",
+                        "name" : "@Author::BBYRD/SingleEncoding",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Plugin::WikiDoc",
+                        "name" : "@Author::BBYRD/WikiDoc",
+                        "version" : "0.093003"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Plugin::EnsurePod5",
+                        "name" : "@CorePrep/EnsurePod5",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Plugin::H1Nester",
+                        "name" : "@CorePrep/H1Nester",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Name",
+                        "name" : "@Author::BBYRD/Name",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Region",
+                        "name" : "@Author::BBYRD/Prelude",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Generic",
+                        "name" : "@Author::BBYRD/Synopsis",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Generic",
+                        "name" : "@Author::BBYRD/Description",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Generic",
+                        "name" : "@Author::BBYRD/Overview",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Collect",
+                        "name" : "Attributes",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Collect",
+                        "name" : "Methods",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Collect",
+                        "name" : "Functions",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Leftovers",
+                        "name" : "@Author::BBYRD/Leftovers",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Region",
+                        "name" : "@Author::BBYRD/postlude",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Availability",
+                        "name" : "@Author::BBYRD/Availability",
+                        "version" : "1.20"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Support",
+                        "name" : "@Author::BBYRD/Support",
+                        "version" : "1.005"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Authors",
+                        "name" : "@Author::BBYRD/Authors",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Contributors",
+                        "name" : "@Author::BBYRD/Contributors",
+                        "version" : "0.006"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Section::Legal",
+                        "name" : "@Author::BBYRD/Legal",
+                        "version" : "4.004"
+                     },
+                     {
+                        "class" : "Pod::Weaver::Plugin::Transformer",
+                        "name" : "@Author::BBYRD/List",
+                        "version" : "4.004"
+                     }
                   ]
                }
             },
             "name" : "@Author::BBYRD/PodWeaver",
-            "version" : "3.102000"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::PruneCruft",
-            "name" : "@Author::BBYRD/PruneCruft",
-            "version" : "4.300039"
+            "version" : "4.002"
          },
          {
             "class" : "Dist::Zilla::Plugin::GitFmtChanges",
@@ -124,19 +225,24 @@
             "version" : "0.005"
          },
          {
+            "class" : "Dist::Zilla::Plugin::PruneCruft",
+            "name" : "@Author::BBYRD/PruneCruft",
+            "version" : "5.012"
+         },
+         {
             "class" : "Dist::Zilla::Plugin::ManifestSkip",
             "name" : "@Author::BBYRD/ManifestSkip",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::Manifest",
             "name" : "@Author::BBYRD/Manifest",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::License",
             "name" : "@Author::BBYRD/License",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::ReadmeAnyFromPod",
@@ -156,17 +262,18 @@
          {
             "class" : "Dist::Zilla::Plugin::InstallGuide",
             "name" : "@Author::BBYRD/InstallGuide",
-            "version" : "1.200000"
+            "version" : "1.200001"
          },
          {
             "class" : "Dist::Zilla::Plugin::ExecDir",
             "name" : "@Author::BBYRD/ExecDir",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::Test::Compile",
             "config" : {
                "Dist::Zilla::Plugin::Test::Compile" : {
+                  "filename" : "t/00-compile.t",
                   "module_finder" : [
                      ":InstallModules"
                   ],
@@ -176,22 +283,22 @@
                }
             },
             "name" : "@Author::BBYRD/Test::Compile",
-            "version" : "2.033"
+            "version" : "2.037"
          },
          {
             "class" : "Dist::Zilla::Plugin::PodCoverageTests",
             "name" : "@Author::BBYRD/PodCoverageTests",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::PodSyntaxTests",
             "name" : "@Author::BBYRD/PodSyntaxTests",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::RunExtraTests",
             "name" : "@Author::BBYRD/RunExtraTests",
-            "version" : "0.011"
+            "version" : "0.016"
          },
          {
             "class" : "Dist::Zilla::Plugin::NoTabsTests",
@@ -206,12 +313,17 @@
                }
             },
             "name" : "@Author::BBYRD/NoTabsTests",
-            "version" : "0.04"
+            "version" : "0.05"
          },
          {
             "class" : "Dist::Zilla::Plugin::Test::EOL",
             "name" : "@Author::BBYRD/Test::EOL",
             "version" : "0.08"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Test::CPAN::Changes",
+            "name" : "@Author::BBYRD/Test::CPAN::Changes",
+            "version" : "0.008"
          },
          {
             "class" : "Dist::Zilla::Plugin::Test::CPAN::Meta::JSON",
@@ -221,7 +333,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Test::CheckDeps",
             "name" : "@Author::BBYRD/Test::CheckDeps",
-            "version" : "0.009"
+            "version" : "0.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::Test::Portability",
@@ -241,7 +353,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Test::ReportPrereqs",
             "name" : "@Author::BBYRD/Test::ReportPrereqs",
-            "version" : "0.006"
+            "version" : "0.010"
          },
          {
             "class" : "Dist::Zilla::Plugin::Test::CheckManifest",
@@ -261,7 +373,7 @@
          {
             "class" : "Dist::Zilla::Plugin::AutoPrereqs",
             "name" : "@Author::BBYRD/@Prereqs/AutoPrereqs",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::MinimumPerl",
@@ -286,32 +398,35 @@
          {
             "class" : "Dist::Zilla::Plugin::MetaConfig",
             "name" : "@Author::BBYRD/MetaConfig",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaJSON",
             "name" : "@Author::BBYRD/MetaJSON",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaYAML",
             "name" : "@Author::BBYRD/MetaYAML",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaNoIndex",
             "name" : "@Author::BBYRD/MetaNoIndex",
-            "version" : "4.300039"
-         },
-         {
-            "class" : "Dist::Zilla::Plugin::FinderCode",
-            "name" : "@Author::BBYRD/MetaProvides::Package/AUTOVIV/:InstallModulesPM",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::MetaProvides::Package",
             "config" : {
-               "Dist::Zilla::Plugin::MetaProvides::Package" : {},
+               "Dist::Zilla::Plugin::MetaProvides::Package" : {
+                  "finder_objects" : [
+                     {
+                        "class" : "Dist::Zilla::Plugin::FinderCode",
+                        "name" : "@Author::BBYRD/MetaProvides::Package/AUTOVIV/:InstallModulesPM",
+                        "version" : "5.012"
+                     }
+                  ]
+               },
                "Dist::Zilla::Role::MetaProvider::Provider" : {
                   "inherit_missing" : "1",
                   "inherit_version" : "1",
@@ -319,12 +434,12 @@
                }
             },
             "name" : "@Author::BBYRD/MetaProvides::Package",
-            "version" : "1.15000000"
+            "version" : "2.000001"
          },
          {
-            "class" : "Dist::Zilla::Plugin::MetaResourcesFromGit",
-            "name" : "@Author::BBYRD/MetaResourcesFromGit",
-            "version" : "1.103620"
+            "class" : "Dist::Zilla::Plugin::GithubMeta",
+            "name" : "@Author::BBYRD/GithubMeta",
+            "version" : "0.42"
          },
          {
             "class" : "Dist::Zilla::Plugin::ContributorsFromGit",
@@ -344,52 +459,52 @@
          {
             "class" : "Dist::Zilla::Plugin::Git::CheckFor::CorrectBranch",
             "name" : "@Author::BBYRD/Git::CheckFor::CorrectBranch",
-            "version" : "0.006"
+            "version" : "0.008"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::CommitBuild",
             "name" : "@Author::BBYRD/Git::CommitBuild",
-            "version" : "2.014"
+            "version" : "2.019"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Check",
             "name" : "@Author::BBYRD/@Git/Check",
-            "version" : "2.014"
+            "version" : "2.019"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Commit",
             "name" : "@Author::BBYRD/@Git/Commit",
-            "version" : "2.014"
+            "version" : "2.019"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",
             "name" : "@Author::BBYRD/@Git/Tag",
-            "version" : "2.014"
+            "version" : "2.019"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Push",
             "name" : "@Author::BBYRD/@Git/Push",
-            "version" : "2.014"
+            "version" : "2.019"
          },
          {
             "class" : "Dist::Zilla::Plugin::GitHub::Update",
             "name" : "@Author::BBYRD/GitHub::Update",
-            "version" : "0.35"
+            "version" : "0.36"
          },
          {
             "class" : "Dist::Zilla::Plugin::TestRelease",
             "name" : "@Author::BBYRD/TestRelease",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::ConfirmRelease",
             "name" : "@Author::BBYRD/ConfirmRelease",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::UploadToCPAN",
             "name" : "@Author::BBYRD/UploadToCPAN",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::InstallRelease",
@@ -404,32 +519,47 @@
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",
             "name" : ":InstallModules",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",
             "name" : ":IncModules",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",
             "name" : ":TestFiles",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",
             "name" : ":ExecFiles",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",
             "name" : ":ShareFiles",
-            "version" : "4.300039"
+            "version" : "5.012"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",
             "name" : ":MainModule",
-            "version" : "4.300039"
+            "version" : "5.012"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::FinderCode",
+            "name" : ":AllFiles",
+            "version" : "5.012"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::FinderCode",
+            "name" : ":NoFiles",
+            "version" : "5.012"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::FinderCode",
+            "name" : "@Author::BBYRD/MetaProvides::Package/AUTOVIV/:InstallModulesPM",
+            "version" : "5.012"
          }
       ],
       "zilla" : {
@@ -437,11 +567,8 @@
          "config" : {
             "is_trial" : "0"
          },
-         "version" : "4.300039"
+         "version" : "5.012"
       }
-   },
-   "x_contributors" : [
-      "Brendan Byrd <bbyrd@cpan.org>"
-   ]
+   }
 }
 

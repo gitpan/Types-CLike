@@ -4,7 +4,7 @@ NAME
 SYNOPSIS
         package MyPackage;
         use Moo;  # or Moose or Mouse
-        use Types::CLike qw(:all);
+        use Types::CLike qw(:c);
  
         has 'foo' => (
            isa => Int     # or Int32, Signed32
@@ -106,8 +106,10 @@ EXPORTER TAGS
         :mysql   = TinyInt SmallInt MediumInt Int BigInt (and Unsigned versions) Float Double
         :ansisql = SmallInt Int Float Real Double
  
-        :is_*    = All of the is_* functions for that tag
-        :*+is    = Both the Moo and is_* functions for that tag
+        :is_*     = All of the is_* functions for that tag
+        :to_*     = Same for to_* functions
+        :assert_* = Same for assert_* functions
+        :+*       = Imports is_*, to_*, assert_*, and types for that tag
 
 CAVEATS
   Types::Numbers
@@ -165,8 +167,7 @@ HISTORY
     Types::Numbers and this module are the result.
 
 AVAILABILITY
-    The project homepage is
-    <https://github.com/SineSwiper/Types-CLike/wiki>.
+    The project homepage is <https://github.com/SineSwiper/Types-CLike>.
 
     The latest version of this module is available from the Comprehensive
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
@@ -191,9 +192,6 @@ SUPPORT
 
 AUTHOR
     Brendan Byrd <BBYRD@CPAN.org>
-
-CONTRIBUTOR
-    Brendan Byrd <bbyrd@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is Copyright (c) 2013 by Brendan Byrd.

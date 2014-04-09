@@ -4,7 +4,7 @@ use v5.8.8;
 use strict;
 use warnings;
 
-our $VERSION = '0.90'; # VERSION
+our $VERSION = '0.91'; # VERSION
 # ABSTRACT: C-like data types for Moo(se)
 
 our @EXPORT_OK = ();
@@ -101,9 +101,9 @@ sub _exporter_expand_tag {
    my $class = shift;
    my ($name, $value, $globals) = @_;
 
+   my $p = '';
    my $base_name = $name;
-   $base_name =~ s/^((?:is|assert|to)_|\+)//g;
-   my $p = $1 || '';
+   $base_name =~ s/^((?:is|assert|to)_|\+)// and $p = $1;
 
    $base_tags{$base_name} and return map [ "$p$_" => $value ], @{ $base_tags{$base_name} };
 
@@ -116,7 +116,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -126,7 +126,7 @@ Types::CLike - C-like data types for Moo(se)
 
     package MyPackage;
     use Moo;  # or Moose or Mouse
-    use Types::CLike qw(:all);
+    use Types::CLike qw(:c);
  
     has 'foo' => (
        isa => Int     # or Int32, Signed32
@@ -225,8 +225,10 @@ some Exporter tags available, grouped by language:
     :mysql   = TinyInt SmallInt MediumInt Int BigInt (and Unsigned versions) Float Double
     :ansisql = SmallInt Int Float Real Double
  
-    :is_*    = All of the is_* functions for that tag
-    :*+is    = Both the Moo and is_* functions for that tag
+    :is_*     = All of the is_* functions for that tag
+    :to_*     = Same for to_* functions
+    :assert_* = Same for assert_* functions
+    :+*       = Imports is_*, to_*, assert_*, and types for that tag
 
 =head1 CAVEATS
 
@@ -278,7 +280,7 @@ API.  Both L<Types::Numbers> and this module are the result.
 
 =head1 AVAILABILITY
 
-The project homepage is L<https://github.com/SineSwiper/Types-CLike/wiki>.
+The project homepage is L<https://github.com/SineSwiper/Types-CLike>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
@@ -312,10 +314,6 @@ Please report any bugs or feature requests via L<https://github.com/SineSwiper/T
 =head1 AUTHOR
 
 Brendan Byrd <BBYRD@CPAN.org>
-
-=head1 CONTRIBUTOR
-
-Brendan Byrd <bbyrd@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
